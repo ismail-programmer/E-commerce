@@ -2,7 +2,7 @@ let userIndex = localStorage.getItem("userIndex");
 // for sourse of image
 let src;
 
-const products = JSON.parse(localStorage.getItem("products")) || [];
+let products = JSON.parse(localStorage.getItem("products")) || [];
 const pIndex = +localStorage.getItem("pIndex");
 const active = products[pIndex];
 
@@ -13,7 +13,8 @@ let values = {
   price: document.getElementById("price"),
   image: document.getElementById("image"),
   description: document.getElementById("description"),
-  form: document.getElementById("form")
+  form: document.getElementById("form"),
+  dlt: document.getElementById("dlt")
 };
 
 // restriction
@@ -52,4 +53,10 @@ if (userIndex === null) {
   };
 
   values.form.addEventListener("submit", Edit);
+  values.dlt.addEventListener("click", () => {
+    products.splice(pIndex, 1);
+    products = products;
+    console.log(products);
+    localStorage.setItem("products", JSON.stringify(products));
+  });
 }

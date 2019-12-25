@@ -62,7 +62,7 @@ const Create = () => {
   console.log(src.result);
   // pushing new product data in array of product array
   products.forEach((el, i) => (el.index = i));
-  products.push(new Product(title, category, price, src.result, description));
+  products.unshift(new Product(title, category, price, src.result, description));
   // pushing new product data in array of products in local storsge
   localStorage.setItem("products", JSON.stringify(products));
   return true;
