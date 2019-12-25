@@ -1,4 +1,4 @@
-
+//
 let rowId = 0;
 let rowIdHtml = 0;
 // geting older products created  by users
@@ -57,7 +57,7 @@ const descriptions = [
 ];
 
 const ids = JSON.parse(localStorage.getItem("productID")) || [];
-for (let i = 0; i <= allProducts.length; i++) {
+for (let i = 0; i <= 10; i++) {
   //! IF length of ids is smaller than products length
   if (allProducts.length - ids.length >= 1) {
     //* Add an id in the beggining of the array
@@ -70,7 +70,7 @@ for (let i = 0; i <= allProducts.length; i++) {
 }
 
 for (let i = 0; i < descriptions.length; i++) {
-  const product = `./images/p${i}.jfif`;
+  const product = `../Product/images/p${i}.jfif`;
   allProducts[i].image = product;
   allProducts[i].description = descriptions[i];
   allProducts[i].date = new Date(`june 28, 2000`);
@@ -80,8 +80,7 @@ for (let i = 0; i < descriptions.length; i++) {
 //? Saving the id in localstorage
 localStorage.setItem("productID", JSON.stringify(ids));
 
-const bigArray = [...products, ...allProducts];
-
+let bigArray = [...products, ...allProducts];
 
 const createHtml = () => {
   const abc = document.createElement("div");
@@ -91,6 +90,13 @@ const createHtml = () => {
   document.body.insertBefore(abc, document.body.lastElementChild);
 };
 createHtml();
+
+if (bigArray.length > 10) {
+  let newArray = bigArray.slice(0, 10);
+  bigArray = newArray;
+}
+console.log(bigArray);
+
 for (let i = 0; i < bigArray.length; i++) {
   if (i % 3 === 2) createHtml();
 }

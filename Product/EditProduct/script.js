@@ -6,15 +6,15 @@ const products = JSON.parse(localStorage.getItem("products")) || [];
 const pIndex = +localStorage.getItem("pIndex");
 const active = products[pIndex];
 
-  //getting feild ids
-  let values = {
-    title: document.getElementById("title"),
-    category: document.getElementById("category"),
-    price: document.getElementById("price"),
-    image: document.getElementById("image"),
-    description: document.getElementById("description")
-  };
-
+//getting feild ids
+let values = {
+  title: document.getElementById("title"),
+  category: document.getElementById("category"),
+  price: document.getElementById("price"),
+  image: document.getElementById("image"),
+  description: document.getElementById("description"),
+  form: document.getElementById("form")
+};
 
 // restriction
 if (userIndex === null) {
@@ -24,7 +24,6 @@ if (userIndex === null) {
   <a href="../../Login/index.html">Please log in</b>
   `;
 } else {
-  
   const Show = () => {
     values.title.value = active.title;
     values.category.value = active.category;
@@ -36,21 +35,21 @@ if (userIndex === null) {
   Show();
 
   // image function loading
-values.image.addEventListener("change", () => {
-  let image = values.image.files[0];
-  src = new FileReader();
-  src.readAsDataURL(image);
-});
+  values.image.addEventListener("change", () => {
+    let image = values.image.files[0];
+    src = new FileReader();
+    src.readAsDataURL(image);
+  });
 
+  //for editing values of user details
+  const Edit = () => {
+    active.title = values.title.value;
+    active.category = values.category.value;
+    active.price = values.price.value;
+    active.image = src.result;
+    active.description = values.description.value;
+    localStorage.setItem("products", JSON.stringify(products));
+  };
 
+  values.form.addEventListener("submit", Edit);
 }
-//for editing values of user details
-const Edit = () => {
-  event.preventDefault()
-  active.title = values.title.value;
-  active.category = values.category.value;
-  active.price = values.price.value;
-  active.image = src.result;
-  active.description = values.description.value;
-  localStorage.setItem("products", JSON.stringify(products));
-};

@@ -6,9 +6,7 @@ if (userIndex === null) {
   <h1>You are not allowed to this page please login</h1>
   <a href="../Login/index.html">Please log in</b>
   `;
-}
-else{
-
+} else {
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
   let values = {
@@ -18,9 +16,10 @@ else{
     lName: document.getElementById("lName"),
     adress: document.getElementById("adress"),
     city: document.getElementById("city"),
-    country: document.getElementById("country")
+    country: document.getElementById("country"),
+    form: document.getElementById("form")
   };
-  
+
   const Show = () => {
     values.email.value = users[userIndex].email;
     values.username.value = users[userIndex].username;
@@ -30,22 +29,22 @@ else{
     values.city.value = users[userIndex].city;
     values.country.value = users[userIndex].country;
   };
-  
+
   // for showing previous values
   Show();
-  
+
   //for editing values of user details
   const Edit = () => {
     users[userIndex].email = values.email.value;
     users[userIndex].username = values.username.value;
-  
     users[userIndex].fname = values.fName.value;
     users[userIndex].lname = values.lName.value;
     users[userIndex].adress = values.adress.value;
     users[userIndex].city = values.city.value;
     users[userIndex].country = values.country.value;
-  
+
     localStorage.setItem("users", JSON.stringify(users));
   };
-  
+
+  values.form.addEventListener("submit", Edit);
 }

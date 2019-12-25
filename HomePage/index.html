@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+
+    <!-- materalize -->
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+  <body id="home">
+    <!-- navBar -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Logo</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="../Signup/index.html">Register</a></li>
+          <li><a href="../Login/index.html">Login</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="../Product/index.html">Products</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="../User/index.html">My profile</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- carosel -->
+    <div class="carousel">
+      <a class="carousel-item" href="#one!"
+        ><img src="./images/slide1.jfif"
+      /></a>
+      <a class="carousel-item" href="#two!"
+        ><img src="./images/slide2.jfif"
+      /></a>
+      <a class="carousel-item" href="#three!"
+        ><img src="./images/slide3.jfif"
+      /></a>
+      <a class="carousel-item" href="#three!"
+        ><img src="./images/slide4.jfif"
+      /></a>
+      <a class="carousel-item" href="#three!"
+        ><img src="./images/slide5.jfif"
+      /></a>
+    </div>
+
+    <div>
+      <h1>Products</h1>
+    </div>
+
+    <script src="./script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var elems = document.querySelectorAll(".carousel");
+        var instances = M.Carousel.init(elems);
+      });
+    </script>
+  </body>
+</html>
