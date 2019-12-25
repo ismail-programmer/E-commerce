@@ -20,7 +20,7 @@ if (userIndex === null) {
   }
 
   if (products.length === 0) {
-    products = +products;
+    // products = +products;
     document.body.innerHTML = `
     <h1>You had not create any product</h1>
     <a href="../AddProduct/index.html">Please add product</b>

@@ -97,11 +97,12 @@ bigArray.map((el, i) => {
   let template = `
   <div class="col l3 m4 s6 ${el.catagory}">
     <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
+      <div style="overflow:visible" class="card-image waves-effect waves-block waves-light">
         <img
           src="${el.image}"
           alt="${el.title}"
         />
+        <a id=${i} class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">${
@@ -159,3 +160,16 @@ document.querySelectorAll('.link').forEach(el=>{
     console.log(e.target.id)
   })
 })
+
+
+
+//adding cart
+const cart = [];
+document.querySelectorAll(".crt").forEach(el => {
+  el.addEventListener("click", e => {
+    let id = e.target.id || e.target.parentNode.id;
+    cart.push(bigArray[id])
+console.log(cart)
+    localStorage.setItem("cart", JSON.stringify(cart) );
+  });
+});
