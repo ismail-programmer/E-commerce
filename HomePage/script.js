@@ -91,12 +91,11 @@ const createHtml = () => {
 };
 createHtml();
 
+//  for rendering recent 9 products
 if (bigArray.length > 10) {
-  let newArray = bigArray.slice(0, 10);
+  let newArray = bigArray.slice(0, 9);
   bigArray = newArray;
 }
-console.log(bigArray);
-
 for (let i = 0; i < bigArray.length; i++) {
   if (i % 3 === 2) createHtml();
 }
@@ -106,7 +105,7 @@ bigArray.forEach((el, i) => {
   let description = el.description;
 
   let template = `
-  <div class="col s12 m4" id="product" >
+  <div class="col s12 m3" id="product" >
     <div class="card">
       <div style="position:relative;" class="card-image">
         <img src="${el.image}" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" />
