@@ -1,15 +1,15 @@
 const userProducts = JSON.parse(localStorage.getItem("products")) || [];
 const products = JSON.parse(localStorage.getItem("previousProducts")) || [];
-const users = JSON.parse(localStorage.getItem('users')) || [];
+const users = JSON.parse(localStorage.getItem("users")) || [];
 const pIndex = localStorage.getItem("pIndex");
 products.forEach(el => {
-  el.image = `.${el.image}`
+  el.image = `.${el.image}`;
 });
 let allProducts;
-if(userProducts){
-  allProducts = [...userProducts,...products]
-}else{
-  allProducts = products
+if (userProducts) {
+  allProducts = [...userProducts, ...products];
+} else {
+  allProducts = products;
 }
 const active = allProducts[pIndex];
 let items = {
@@ -25,20 +25,13 @@ let items = {
 };
 if (!pIndex) document.body.innerHTML = `<h1>Please Select a Product</h1>`;
 else {
-  (function(){
-    try{
-      items.userId.innerHTML = active.userId;
-      items.productId.innerHTML = active.productId;
-      items.username.innerHTML = active.username;
-      items.title.innerHTML = active.title;
-      items.category.innerHTML = active.category;
-      items.price.innerHTML = active.price;
-      items.image.src =   `${active.image}`;
-      items.description.innerHTML = active.description;
-      items.date.innerHTML = new Date(active.date).toDateString();
-    }
-    catch(error){
-      alert(error)
-    }
-  })()
+  items.userId.innerHTML = active.userId;
+  items.productId.innerHTML = active.productId;
+  items.username.innerHTML = active.username;
+  items.title.innerHTML = active.title;
+  items.category.innerHTML = active.category;
+  items.price.innerHTML = active.price;
+  items.image.src = `${active.image}`;
+  items.description.innerHTML = active.description;
+  items.date.innerHTML = new Date(active.date).toDateString();
 }

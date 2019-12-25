@@ -18,7 +18,8 @@ let items = {
   adress: document.getElementById("adress"),
   city: document.getElementById("city"),
   country: document.getElementById("country"),
-  date: document.getElementById("date")
+  date: document.getElementById("date"),
+  logout: document.getElementById("logout")
 };
 
 items.id.innerHTML = users[userIndex].id;
@@ -30,3 +31,8 @@ items.adress.innerHTML = users[userIndex].adress;
 items.city.innerHTML = users[userIndex].city;
 items.country.innerHTML = users[userIndex].country;
 items.date.innerHTML = new Date(users[userIndex].date).toDateString();
+
+// for loggin out
+items.logout.addEventListener("click", () => {
+  localStorage.removeItem("userIndex");
+});

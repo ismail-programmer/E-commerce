@@ -10,6 +10,15 @@ if (userIndex === null) {
 } else {
   const users = JSON.parse(localStorage.getItem("users")) || [];
   let products = JSON.parse(localStorage.getItem("products")) || [];
+  const previousProducts = JSON.parse(localStorage.getItem("previousProducts")) || []; 
+
+  let allProducts;
+  if(products){
+    allProducts = [...products,...previousProducts]
+  }else{
+    allProducts = products
+  }
+
   if (products.length === 0) {
     products = +products;
     document.body.innerHTML = `
@@ -19,25 +28,34 @@ if (userIndex === null) {
   } else {
     let userId = users[userIndex].id;
 
-    products.map((product, i) => {
+    allProducts.map((product, i) => {
       if (userId === product.userId) {
-        let template = `<div class="col s12 m4" id="product" >
-            <div class="card">
-            <div class="card-image">
-            <a href="../ViewDetails/index.html"
-           id=${i} 
-           onclick=${localStorage.setItem("pIndex", i)}
-           >View Details</a>
-            <img src="${product.image}">
-            <span class="card-title">${product.title}</span>
-            </div>
-            <div class="card-content">
-            <p>${product.description}</p>
-            </div>
-            </div>
-            </div>`;
+        let template = ` <div class="col l3 m4 s6 ${product.catagory}">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img
+              src="${product.image}"
+              alt="${product.title}"
+            />
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">${product.title}<i class="material-icons right">more_vert</i></span>
+            <p><a class="link" id="${i}" href="../ViewDetails/index.html">View More</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">${product.title}<i class="material-icons right">close</i></span>
+            <ul>${product.description}</ul>
+          </div>
+        </div>
+      </div>`;
         document.getElementById("row").innerHTML += template;
       }
     });
   }
+  document.querySelectorAll('.link').forEach(el=>{
+    el.addEventListener('click',(e)=>{
+      localStorage.setItem("pIndex", e.target.id)
+      console.log(e.target.id)
+    })
+  })
 }

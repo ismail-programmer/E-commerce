@@ -1,5 +1,5 @@
-//removing previous value
-localStorage.removeItem("userIndex");
+// //removing previous value
+// localStorage.removeItem("userIndex");
 
 const loginUsers =
   JSON.parse(localStorage.getItem("users")) === null
