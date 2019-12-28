@@ -40,22 +40,28 @@
     </nav>
 
     <!-- carosel -->
-    <div class="carousel">
-      <a class="carousel-item" href="#one!"
-        ><img src="./images/slide1.jfif"
-      /></a>
-      <a class="carousel-item" href="#two!"
-        ><img src="./images/slide2.jfif"
-      /></a>
-      <a class="carousel-item" href="#three!"
-        ><img src="./images/slide3.jfif"
-      /></a>
-      <a class="carousel-item" href="#three!"
-        ><img src="./images/slide4.jfif"
-      /></a>
-      <a class="carousel-item" href="#three!"
-        ><img src="./images/slide5.jfif"
-      /></a>
+    <div class="row">
+      <div class="col s10">
+        <div class="carousel carousel-slider ">
+          <div class="carousel-item"><img src="./images/slide1.jfif" /></div>
+          <div class="carousel-item"><img src="./images/slide2.jfif" /></div>
+          <div class="carousel-item"><img src="./images/slide3.jfif" /></div>
+          <div class="carousel-item"><img src="./images/slide4.jfif" /></div>
+          <div class="carousel-item"><img src="./images/slide5.jfif" /></div>
+        </div>
+      </div>
+      <button
+        class="btn-large prev black-text"
+        style="font-size: 2rem; position: absolute; top: 50%; transform:translateY(-50%); background-color: rgba(255,255,255,0.335); left:1% "
+      >
+        &Leftarrow;
+      </button>
+      <button
+        class="btn-large next black-text"
+        style="font-size: 2rem; position: absolute; top: 50%; transform:translateY(-50%); background-color: rgba(255,255,255,0.335); right:1%"
+      >
+        &Rightarrow;
+      </button>
     </div>
 
     <div>
@@ -92,11 +98,23 @@
       </div>
     </footer>
 
+    <!-- slides -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        var elems = document.querySelectorAll(".carousel");
-        var instances = M.Carousel.init(elems);
+      const cl = document.querySelector(".carousel");
+      M.Carousel.init(cl, {
+        dist: -250,
+        duration: 100,
+        indicators: true,
+        fullWidth: true
       });
+      const instance = M.Carousel.getInstance(cl);
+      setInterval(() => instance.next(), 3000);
+      document
+        .querySelector(".prev")
+        .addEventListener("click", () => instance.prev());
+      document
+        .querySelector(".next")
+        .addEventListener("click", () => instance.next());
     </script>
   </body>
 </html>

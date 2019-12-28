@@ -17,11 +17,27 @@
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Logo</a>
+        <ul id="nav-mobile" class="left ">
+          <li><a href="../Product/index.html">Products</a></li>
+          <li><a href="../Product/AddProduct/index.html">Add products</a></li>
+          <li><a href="../Cart/index.html">Cart</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right">
+          <li><a href="../User/EditDetais/index.html">Edit Details</a></li>
+          <li><a href="../Product/UserProducts/index.html">My Products</a></li>
+          <li><a href="../Login/index.html" id="logout">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <h1>Dashboard</h1>
     <div>
       <p>ID : <span id="id"></span></p>
       <p>Email : <span id="email"></span></p>
-      <p>Username : <span id="username"></span></p>
+      <p>Username : <b><span id="username"></b></span></p>
       <p>First Name : <span id="fName"></span></p>
       <p>Last Name : <span id="lName"></span></p>
       <p>Adress : <span id="adress"></span></p>
@@ -29,14 +45,7 @@
       <p>Country : <span id="country"></span></p>
       <p>Registeration Date: <span id="date"></span></p>
     </div>
-    <a href="./EditDetais/index.html">Edit Personal Details</a>
     <br />
-    <a href="../Product/UserProducts/index.html">My products</a>
-    <br />
-
-    <a href="../Product/index.html">Products Page</a>
-    <br />
-    <a href="../Login/index.html" id="logout">Logout</a>
 
     <script src="./script.js"></script>
   </body>

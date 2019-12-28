@@ -1,15 +1,20 @@
 //
 let rowId = 0;
 let rowIdHtml = 0;
+// geting  users
+let users =
+  JSON.parse(localStorage.getItem("products")) === null
+    ? []
+    : JSON.parse(localStorage.getItem("products"));
 // geting older products created  by users
 let products =
   JSON.parse(localStorage.getItem("products")) === null
     ? []
     : JSON.parse(localStorage.getItem("products"));
 const allProducts = JSON.parse(localStorage.getItem("previousProducts"));
-allProducts.forEach(el=>{
-  el.image = `../Product/${el.image}`
-})
+allProducts.forEach(el => {
+  el.image = `../Product/${el.image}`;
+});
 
 let bigArray = [...products, ...allProducts];
 
@@ -64,7 +69,7 @@ bigArray.forEach((el, i) => {
 });
 
 setTimeout(() => {
-  const heights = Array.from(document.querySelectorAll("img")).map(
+  const heights = Array.from(document.querySelectorAll(".card-image img")).map(
     el => el.offsetHeight
   );
   let maxHeight;
@@ -96,14 +101,34 @@ document.querySelectorAll(".link").forEach(el => {
   });
 });
 
-
 //adding cart
-const cart = [];
-document.querySelectorAll(".crt").forEach(el => {
-  el.addEventListener("click", e => {
-    let id = e.target.id || e.target.parentNode.id;
-    cart.push(bigArray[id])
-console.log(cart)
-    localStorage.setItem("cart", JSON.stringify(cart) );
+
+class Cart {
+  constructor(userId, productId, userIndex, productIndex) {
+    this.userId = userId;
+    this.productId = productId;
+    this.userIndex = userIndex;
+    this.productIndex = productIndex;
+  }
+}
+
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.querySelectorAll(".crt").forEach((el, i) => {
+  el.addEventListener("click", () => {
+    const cartProduct = bigArray[i];
+    const productOwner = { ...users[cartProduct.userIndex] };
+    if (!cartProduct.userIndex) {
+      cartProduct.userIndex = `-1`;
+      productOwner.id = `ADMIN`;
+    }
+    const myCart = new Cart(
+      productOwner.id,
+      cartProduct.productId,
+      cartProduct.userIndex,
+      i
+    );
+    cart.unshift(myCart);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
   });
 });

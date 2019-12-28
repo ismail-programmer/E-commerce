@@ -27,7 +27,6 @@ if (userIndex === null) {
     `;
   } else {
     let userId = users[userIndex].id;
-
     allProducts.map((product, i) => {
       if (userId === product.userId) {
         let template = ` <div class="col l3 m4 s6 ${product.catagory}">

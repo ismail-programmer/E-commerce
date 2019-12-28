@@ -105,15 +105,11 @@ bigArray.map((el, i) => {
         <a id=${i} class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">${
-          el.title
-        }<i class="material-icons right">more_vert</i></span>
+        <span class="card-title activator grey-text text-darken-4">${el.title}<i class="material-icons right">more_vert</i></span>
         <p><a class="link" id="${i}" href="./ViewDetails/index.html">View More</a></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">${
-          el.title
-        }<i class="material-icons right">close</i></span>
+        <span class="card-title grey-text text-darken-4">${el.title}<i class="material-icons right">close</i></span>
         <ul>${el.description}</ul>
       </div>
     </div>
@@ -154,22 +150,41 @@ setTimeout(() => {
 }, 200);
 
 localStorage.setItem("previousProducts", JSON.stringify(allProducts));
-document.querySelectorAll('.link').forEach(el=>{
-  el.addEventListener('click',(e)=>{
-    localStorage.setItem("pIndex", e.target.id)
-    console.log(e.target.id)
-  })
-})
-
-
+document.querySelectorAll(".link").forEach(el => {
+  el.addEventListener("click", e => {
+    localStorage.setItem("pIndex", e.target.id);
+    console.log(e.target.id);
+  });
+});
 
 //adding cart
-const cart = [];
-document.querySelectorAll(".crt").forEach(el => {
-  el.addEventListener("click", e => {
-    let id = e.target.id || e.target.parentNode.id;
-    cart.push(bigArray[id])
-console.log(cart)
-    localStorage.setItem("cart", JSON.stringify(cart) );
+
+class Cart {
+  constructor(userId, productId, userIndex, productIndex) {
+    this.userId = userId;
+    this.productId = productId;
+    this.userIndex = userIndex;
+    this.productIndex = productIndex;
+  }
+}
+
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.querySelectorAll(".crt").forEach((el, i) => {
+  el.addEventListener("click", () => {
+    const cartProduct = bigArray[i];
+    const productOwner = { ...users[cartProduct.userIndex] };
+    if (!cartProduct.userIndex) {
+      cartProduct.userIndex = `-1`;
+      productOwner.id = `ADMIN`;
+    }
+    const myCart = new Cart(
+      productOwner.id,
+      cartProduct.productId,
+      cartProduct.userIndex,
+      i
+    );
+    cart.unshift(myCart);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
   });
 });

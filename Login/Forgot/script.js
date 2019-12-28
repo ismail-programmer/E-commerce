@@ -2,7 +2,7 @@
 var loginUsers = JSON.parse(localStorage.getItem("users")) || [];
 
 // errors p
-const Restrictions = ["p", "cp"];
+const Restrictions = ["p", "cp", "e"];
 
 // geting  value
 let inputs = {
@@ -18,13 +18,15 @@ let inputs = {
 
 //forgot Pass getting emali
 const Forgot = () => {
-  return loginUsers.forEach(user => {
+  return loginUsers.find(user => {
     if (user.email === inputs.fEmail.value) {
+      inputs.RestrictionPg[2].innerHTML = "";
       inputs.Fpassword.disabled = false;
       inputs.FconfirmPassword.disabled = false;
       return true;
     } else {
-      alert("not exsists");
+      // alert("not exsists");
+      inputs.RestrictionPg[2].innerHTML = "User not exsists";
       inputs.Fpassword.disabled = true;
       inputs.FconfirmPassword.disabled = true;
       return false;

@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Forgot</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Forgot</title>
- 
-  <!-- ! maerilize cdn -->
+    <!-- ! maerilize cdn -->
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      
- 
-</head>
+  </head>
 
-<body>
-  <h1 contenteditable>Forgot Password</h1>
-  <div id="pForm">
-    <p>Type Your Email adress</p>
-    <input type="email" id="fEmail">
-    <button type="submit" onclick="Forgot()">Verify</button>
-  </div>
+  <body>
+    <!-- navBar -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Logo</a>
+        <ul id="nav-mobile" class="left ">
+          <li><a href="../index.html">Login</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right">
+          <li><a href="../../Product/index.html">Products</a></li>
+          <li><a href="../../Cart/index.html">Cart</a></li>
+        </ul>
+      </div>
+    </nav>
 
+    <h1 contenteditable>Forgot Password</h1>
+    <div id="pForm">
+      <p>Type Your Email adress</p>
+      <input type="email" id="fEmail" />
+      <p class="eRes"></p>
+      <button type="submit" onclick="Forgot()">Verify</button>
+    </div>
 
-  <!-- ! for changing password form -->
-  <div id="fForm">
-    <label for="Fpassword" onblur="e => chkPass(e.target.value)"> New Pasword</label>
-    <input id="Fpassword" type="password" disabled required>
-    <p class="pRes"></p>
+    <!-- ! for changing password form -->
+    <div id="fForm">
+      <label for="Fpassword" onblur="e => chkPass(e.target.value)">
+        New Pasword</label
+      >
+      <input id="Fpassword" type="password" disabled required />
+      <p class="pRes"></p>
 
-    <label for="Fconfirm-password">Confirm Pasword</label>
-    <input id="Fconfirm-password" onblur="e=> confirmPass(inputs.Fpassword.value, e.target.value)" disabled type="password" required>
-    <p class="cpRes"></p>
-    <button onclick="changingPassword()" >Save changes</button>
-  </div>
-  <script src="./script.js"></script>
-</body>
-
+      <label for="Fconfirm-password">Confirm Pasword</label>
+      <input
+        id="Fconfirm-password"
+        onblur="e=> confirmPass(inputs.Fpassword.value, e.target.value)"
+        disabled
+        type="password"
+        required
+      />
+      <p class="cpRes"></p>
+      <button onclick="changingPassword()">Save changes</button>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>
