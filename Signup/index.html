@@ -1,55 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Signup</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Signup</title>
 
     <!-- ! maerilize cdn -->
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      
- 
-</head>
+  </head>
 
-<body>
-  <h1>Signup</h1>
-  <form id="form" action="../Login/index.html" onsubmit="return Signup(this)">
-    <label for="username">Username</label>
-    <input id="username" type="text" placeholder="username" required>
-    <p class="uRes"></p>
-    <label for="password">Pasword</label>
-    <input id="password" type="password" required>
-    <p class="pRes"></p>
-    <label for="password">Confirm Pasword</label>
-    <input id="confirm-password" type="password" required>
-    <p class="cpRes"></p>
-    <label for="email">Email</label>
-    <input id="email" type="email" required>
-    <p class="eRes"></p>
-    <label for="fname">First name</label>
-    <input id="fname" type="text" required>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="../HomePage/index.html">   <img src="../HomePage/images/logo.png"  class="brand-logo center" height="100%" ></a>
+        <ul id="nav-mobile" class="left ">
+          <li><a href="../Login/index.html">Login</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right">
+          <li><a href="../Product/index.html">Products</a></li>
+        </ul>
+      </div>
+    </nav>
 
-    <label for="lname">Last name</label>
-    <input id="lname" type="text" required>
+    <h1>Signup</h1>
+    <form id="form" action="../Login/index.html" onsubmit="return Signup(this)">
+      <label for="username">Username</label>
+      <input id="username" type="text" placeholder="username" required />
+      <p class="uRes"></p>
+      <label for="password">Pasword</label>
+      <input id="password" type="password" required />
+      <p class="pRes"></p>
+      <label for="password">Confirm Pasword</label>
+      <input id="confirm-password" type="password" required />
+      <p class="cpRes"></p>
+      <label for="email">Email</label>
+      <input id="email" type="email" required />
+      <p class="eRes"></p>
+      <label for="fname">First name</label>
+      <input id="fname" type="text" required />
 
-    <label for="adress">Adress</label>
-    <input id="adress" type="text" required>
+      <label for="lname">Last name</label>
+      <input id="lname" type="text" required />
 
-    <label for="city">City</label>
-    <input id="city" type="text" required>
+      <label for="adress">Adress</label>
+      <input id="adress" type="text" required />
 
-    <label for="country">Country</label>
-    <input id="country" type="text" required>
+      <label for="city">City</label>
+      <input id="city" type="text" required />
 
-    <input type="submit" value="submit">
-  </form>
-  <script src="script.js"></script>
-</body>
+      <label for="country">Country</label>
+      <input id="country" type="text" required />
 
+      <input type="submit" value="submit" />
+    </form>
+    <script src="script.js"></script>
+  </body>
 </html>

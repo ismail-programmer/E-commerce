@@ -41,21 +41,21 @@ bigArray.forEach((el, i) => {
   <div class="col l3 m4 s6 ${el.catagory}">
   <div class="card">
     <div style="overflow:visible" class="card-image waves-effect waves-block waves-light">
-    <img
-    src="${el.image}"
-    alt="${el.title}"
-    />
-    <a id="${i}" class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-      </div>
+      <img
+        src="${el.image}"
+        alt="${el.title}"
+      />
+      <a id=${i} class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+    </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">${el.title}<i class="material-icons right">more_vert</i></span>
-      <p><a class="link" id="${i}" href="../Product/ViewDetails/index.html">View More</a></p>
+      <span class="card-title activator grey-text text-darken-2">${el.price}</span>
+      <p> <a  href="../Product/ViewDetails/index.html">   <button class="btn link" id="${i}">View More</button></a></p>
     </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">${el.title}
-      <i class="material-icons right">close</i>
-      </span>
-      <ul>${el.description}</ul>
+      <span class="card-title grey-text text-darken-4">${el.title}<i class="material-icons right">close</i></span>
+      <ul>
+      <li>${el.description}</li></ul>
     </div>
   </div>
 </div>`;

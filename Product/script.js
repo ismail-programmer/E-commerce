@@ -1,5 +1,13 @@
 let rowId = 0;
 let rowIdHtml = 0;
+
+
+// geting  users
+let users =
+  JSON.parse(localStorage.getItem("products")) === null
+    ? []
+    : JSON.parse(localStorage.getItem("products"));
+
 // geting older products created  by users
 let products =
   JSON.parse(localStorage.getItem("products")) === null
@@ -106,11 +114,13 @@ bigArray.map((el, i) => {
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">${el.title}<i class="material-icons right">more_vert</i></span>
-        <p><a class="link" id="${i}" href="./ViewDetails/index.html">View More</a></p>
+        <span class="card-title activator grey-text text-darken-2">${el.price}</span>
+        <p> <a  href="./ViewDetails/index.html">   <button class="btn link" id="${i}">View More</button></a></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">${el.title}<i class="material-icons right">close</i></span>
-        <ul>${el.description}</ul>
+        <ul>
+        <li>${el.description}</li></ul>
       </div>
     </div>
   </div>`;
@@ -177,6 +187,8 @@ document.querySelectorAll(".crt").forEach((el, i) => {
       cartProduct.userIndex = `-1`;
       productOwner.id = `ADMIN`;
     }
+    // cartProduct.userIndex = productOwner;
+    // productOwner.id = user;
     const myCart = new Cart(
       productOwner.id,
       cartProduct.productId,
