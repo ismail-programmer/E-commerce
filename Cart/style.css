@@ -1,0 +1,39 @@
+.div{
+  position: absolute;
+
+}
+.div button{
+  box-shadow: none !important;
+}
+.q{
+  padding-top: 1.5rem;
+}
+.up{
+  top: -10px;
+  right: -17.5px;
+}
+.down{
+  right: -18.5px;
+  bottom: -30px;
+}
+.circle{
+  transform: scale(1.5) translateY(25%);
+}
+.q:focus{
+  outline: none;
+}
+p + a{
+  width: 100px;
+  position: absolute !important;
+  top: 50%;
+  right: 10%;
+  transform: translate(10%,-50%);
+}
+.cancel{
+  top: 50%;
+  right: 4%;
+  transform: translate(4%,-50%);
+}
+.delete{
+  font-size: 1.5rem !important;
+}

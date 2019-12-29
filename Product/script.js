@@ -1,7 +1,6 @@
 let rowId = 0;
 let rowIdHtml = 0;
 
-
 // geting  users
 let users =
   JSON.parse(localStorage.getItem("products")) === null
@@ -18,38 +17,38 @@ const allProducts = [
   {
     title: `A macro step change inferred`,
     catagory: `computer`,
-    price: `129.50$`
+    price: `$129.50`
   },
   {
     title: `AI CHIPS WITH MILITARY PRECISION`,
     catagory: `computer`,
-    price: `100.00$`
+    price: `$100.00`
   },
   {
     title: `Qualcomm, Nvidia with new AI chips`,
     catagory: `computer`,
-    price: `99.99$`
+    price: `$99.99`
   },
-  { title: `Earbuds for smartphones`, catagory: `mobile`, price: `10.00$` },
+  { title: `Earbuds for smartphones`, catagory: `mobile`, price: `$10.00` },
   {
     title: `Precision Crafted for Sound and Beauty`,
     catagory: `mobile`,
-    price: `200.00$`
+    price: `$200.00`
   },
   {
     title: `White & Decker Microwave Oven 20Ltr (MZ2010P)`,
     catagory: `home`,
-    price: `499.99$`
+    price: `$499.99`
   },
   {
     title: `23 Ltr Burger Microwave Oven Grill Black`,
     catagory: `home`,
-    price: `799.99$`
+    price: `$799.99`
   },
   {
     title: `Electrolux SEM-130ESL-B6 Microwave Oven`,
     catagory: `home`,
-    price: `999.99$`
+    price: `$999.99`
   }
 ];
 const descriptions = [
@@ -168,35 +167,33 @@ document.querySelectorAll(".link").forEach(el => {
 });
 
 //adding cart
-
+let myCart;
 class Cart {
-  constructor(userId, productId, userIndex, productIndex) {
-    this.userId = userId;
+  constructor(productId, userIndex, productIndex) {
     this.productId = productId;
     this.userIndex = userIndex;
     this.productIndex = productIndex;
+    this.quantity = 1;
   }
 }
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartId = cart.map(el => el.productId);
 document.querySelectorAll(".crt").forEach((el, i) => {
+  const cartProduct = bigArray[i];
   el.addEventListener("click", () => {
-    const cartProduct = bigArray[i];
-    const productOwner = { ...users[cartProduct.userIndex] };
-    if (!cartProduct.userIndex) {
+    if (!cartProduct.userIndex || cartProduct.userIndex === `-1`) {
       cartProduct.userIndex = `-1`;
-      productOwner.id = `ADMIN`;
     }
-    // cartProduct.userIndex = productOwner;
-    // productOwner.id = user;
-    const myCart = new Cart(
-      productOwner.id,
-      cartProduct.productId,
-      cartProduct.userIndex,
-      i
-    );
-    cart.unshift(myCart);
-
+    if (cartId.includes(cartProduct.productId)) {
+      
+      cart[cartId.indexOf(cartProduct.productId)].quantity++;
+    } else {
+      myCart = new Cart(cartProduct.productId, cartProduct.userIndex, i);
+      console.log(myCart);
+      cart.unshift(myCart);
+      cartId.unshift(myCart.productId);
+    }
     localStorage.setItem("cart", JSON.stringify(cart));
   });
 });

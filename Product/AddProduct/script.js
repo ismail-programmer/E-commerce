@@ -22,7 +22,7 @@ const loginUserId = loginUser.id;
 
 //  constructor
 class Product {
-  constructor(title, category, price, image, description) {
+  constructor(title, category, price, image, description,userIndex) {
     this.username = loginUser.username;
     this.userId = loginUser.id;
     this.date = new Date();
@@ -34,6 +34,7 @@ class Product {
     this.price = price;
     this.image = image;
     this.description = description;
+    this.userIndex = userIndex;
   }
 }
 
@@ -62,7 +63,7 @@ const Create = () => {
   console.log(src.result);
   // pushing new product data in array of product array
   products.forEach((el, i) => (el.index = i));
-  products.unshift(new Product(title, category, price, src.result, description));
+  products.unshift(new Product(title, category, price, src.result, description,userIndex));
   // pushing new product data in array of products in local storsge
   localStorage.setItem("products", JSON.stringify(products));
   return true;

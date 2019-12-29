@@ -102,33 +102,32 @@ document.querySelectorAll(".link").forEach(el => {
 });
 
 //adding cart
-
+let myCart;
 class Cart {
-  constructor(userId, productId, userIndex, productIndex) {
-    this.userId = userId;
+  constructor(productId, userIndex, productIndex) {
     this.productId = productId;
     this.userIndex = userIndex;
     this.productIndex = productIndex;
+    this.quantity = 1;
   }
 }
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartId = cart.map(el => el.productId);
 document.querySelectorAll(".crt").forEach((el, i) => {
+  const cartProduct = bigArray[i];
   el.addEventListener("click", () => {
-    const cartProduct = bigArray[i];
-    const productOwner = { ...users[cartProduct.userIndex] };
-    if (!cartProduct.userIndex) {
+    if (!cartProduct.userIndex || cartProduct.userIndex === `-1`) {
       cartProduct.userIndex = `-1`;
-      productOwner.id = `ADMIN`;
     }
-    const myCart = new Cart(
-      productOwner.id,
-      cartProduct.productId,
-      cartProduct.userIndex,
-      i
-    );
-    cart.unshift(myCart);
-
+    if (cartId.includes(cartProduct.productId)) {
+      cart[cartId.indexOf(cartProduct.productId)].quantity++;
+    } else {
+      myCart = new Cart(cartProduct.productId, cartProduct.userIndex, i);
+      console.log(myCart);
+      cart.unshift(myCart);
+      cartId.unshift(myCart.productId);
+    }
     localStorage.setItem("cart", JSON.stringify(cart));
   });
 });
