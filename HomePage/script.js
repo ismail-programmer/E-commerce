@@ -3,9 +3,11 @@ let rowId = 0;
 let rowIdHtml = 0;
 // geting  users
 let users =
-  JSON.parse(localStorage.getItem("products")) === null
+  JSON.parse(localStorage.getItem("users")) === null
     ? []
-    : JSON.parse(localStorage.getItem("products"));
+    : JSON.parse(localStorage.getItem("users"));
+
+const userIndex = localStorage.getItem("userIndex");
 // geting older products created  by users
 let products =
   JSON.parse(localStorage.getItem("products")) === null
@@ -131,3 +133,34 @@ document.querySelectorAll(".crt").forEach((el, i) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   });
 });
+
+//user info
+
+const elements = {
+  name: document.getElementById("name"),
+  email: document.getElementById("email"),
+  userName: document.getElementById("user"),
+  userId: document.getElementById("userId"),
+  infoContainer: document.getElementById("nav-nav")
+};
+
+// console.log(userIndex);
+setTimeout(()=>{
+  if (userIndex) {
+    document.getElementById( "name").innerHTML = `${users[userIndex].fname} ${users[userIndex].lname}`;
+    document.getElementById("email").innerHTML = users[userIndex].email;
+    document.getElementById("user").innerHTML = users[userIndex].username;
+    document.getElementById("userId").innerHTML = users[userIndex].id;
+  } else {
+    
+    document.getElementById("nav-nav").innerHTML = `
+    <div class="row">
+      <div class="s12 center-align"><img src="./images/icon.png" alt="Login" class="img" width="150px"></div>
+    </div>
+    <div class="row">
+      <div class="col s6 center-align"><a href="../Login/index.html" class="btn white grey-text center">Login</a></div>
+      <div class="col s6 center-align"><a href="../SignUp/index.html" class="btn white grey-text center">SignUp</a></div>
+    </div>`;
+  }
+  
+},1000)

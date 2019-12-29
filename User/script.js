@@ -35,4 +35,5 @@ items.date.innerHTML = new Date(users[userIndex].date).toDateString();
 // for loggin out
 items.logout.addEventListener("click", () => {
   localStorage.removeItem("userIndex");
+  localStorage.removeItem("cart");
 });

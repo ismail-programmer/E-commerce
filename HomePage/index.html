@@ -21,6 +21,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body id="home">
     <!-- navBar -->
@@ -32,23 +33,12 @@
         <ul id="nav-mobile" class="left ">
           <li><a href="../Signup/index.html">Register</a></li>
           <li><a href="../Login/index.html">Login</a></li>
+          <li><a href="../Admin/index.html">Admin</a></li>
         </ul>
         <ul id="nav-mobile" class="right">
           <li><a href="../Product/index.html">Products</a></li>
           <li><a href="../Cart/index.html">Cart</a></li>
           <li><a href="../User/index.html">My profile</a></li>
-          <li>
-            <div class="col s3 input-field">
-              <div>
-                <input
-                  type="search"
-                  class="pink white-text input"
-                  id="search"
-                  placeholder="Search"
-                />
-              </div>
-            </div>
-          </li>
         </ul>
       </div>
     </nav>
@@ -101,6 +91,58 @@
     </div>
 
     <script src="./script.js"></script>
+
+    <div
+      style="background-image: url(./images/promo.jpg); width: 100%; height:100vh"
+    >
+      <div >
+        <h1
+          class="black-text "
+          style="background:rgba(255,255,255,0.9); width:max-content; "
+        >
+          UP TO 40% OFF
+        </h1>
+        <h2
+          class=" black-text "
+          style=" background:rgba(255,255,255,0.9); width:max-content"
+        >
+          IN SECOND HAND Products
+        </h2>
+        <a href="../Product/index.html "
+          ><button class="valign btn-large white grey-text">Shop Now</button></a
+        >
+      </div>
+    </div>
+    <div class="nagivation">
+      <input
+        type="checkbox"
+        id="nav-toggle"
+        class="nav-checkbox navigation-checkbox"
+      />
+      <label for="nav-toggle" class="nav-btn cyan"
+        ><span class="nav-icon">&nbsp;</span></label
+      >
+      <div class="nav-bg navigation-background cyan">&nbsp;</div>
+      <nav id="nav-nav" class="nav-nav">
+        <h2>Account Info</h2>
+        <div>
+          <h5>Name: <span id="name"></span></h5>
+        </div>
+        <div>
+          <h5>Email: <span id="email"></span></h5>
+        </div>
+        <div>
+          <h5>User Name: <span id="user"></span></h5>
+        </div>
+        <div>
+          <h5>User ID: <span id="userId"></span></h5>
+        </div>
+        <a href="../Cart/index.html" class="btn waves-effect white grey-text"
+          >My Cart</a
+        >
+      </nav>
+    </div>
+
     <!-- footer -->
 
     <footer class="page-footer">
@@ -120,8 +162,9 @@
                 <li>
                   <i class=" material-icons"> account_balance</i> Adress:
                   <p>
-                    Faisalabad Punjab Pakistan
+                    Faisalabad Punjab
                   </p>
+                  <br />
                 </li>
                 <li>
                   <i class=" material-icons">local_phone</i> Phone:
@@ -130,6 +173,7 @@
                   </p>
                 </li>
               </div>
+              <!-- <br> -->
               <div class="col l6">
                 <li>
                   <i class=" material-icons">access_time</i> Working Hours:
@@ -137,6 +181,7 @@
                     9am 5pm Mon-Fri
                   </p>
                 </li>
+                <br />
                 <li>
                   <i class=" material-icons">mail </i> Email:
                   <p>
@@ -150,7 +195,7 @@
       </div>
       <div class="footer-copyright">
         <div class="container center">
-          © 2019 Copyright All Rights reserved.
+           2019 All Rights reserved.
         </div>
       </div>
     </footer>

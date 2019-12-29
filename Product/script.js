@@ -16,38 +16,38 @@ let products =
 const allProducts = [
   {
     title: `A macro step change inferred`,
-    catagory: `computer`,
+    category: `computer`,
     price: `$129.50`
   },
   {
     title: `AI CHIPS WITH MILITARY PRECISION`,
-    catagory: `computer`,
+    category: `computer`,
     price: `$100.00`
   },
   {
     title: `Qualcomm, Nvidia with new AI chips`,
-    catagory: `computer`,
+    category: `computer`,
     price: `$99.99`
   },
-  { title: `Earbuds for smartphones`, catagory: `mobile`, price: `$10.00` },
+  { title: `Earbuds for smartphones`, category: `mobile`, price: `$10.00` },
   {
     title: `Precision Crafted for Sound and Beauty`,
-    catagory: `mobile`,
+    category: `mobile`,
     price: `$200.00`
   },
   {
     title: `White & Decker Microwave Oven 20Ltr (MZ2010P)`,
-    catagory: `home`,
+    category: `home`,
     price: `$499.99`
   },
   {
     title: `23 Ltr Burger Microwave Oven Grill Black`,
-    catagory: `home`,
+    category: `home`,
     price: `$799.99`
   },
   {
     title: `Electrolux SEM-130ESL-B6 Microwave Oven`,
-    catagory: `home`,
+    category: `home`,
     price: `$999.99`
   }
 ];
@@ -102,7 +102,7 @@ for (let i = 0; i < bigArray.length; i++) {
 
 bigArray.map((el, i) => {
   let template = `
-  <div class="col l3 m4 s6 ${el.catagory}">
+  <div class="col l3 m4 s6 ${el.category}">
     <div class="card">
       <div style="overflow:visible" class="card-image waves-effect waves-block waves-light">
         <img
@@ -176,7 +176,10 @@ class Cart {
     this.quantity = 1;
   }
 }
-
+const elements = {
+  list: document.querySelector(".sidenav"),
+  productName: document.querySelector(".prod")
+};
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartId = cart.map(el => el.productId);
 document.querySelectorAll(".crt").forEach((el, i) => {
@@ -186,7 +189,6 @@ document.querySelectorAll(".crt").forEach((el, i) => {
       cartProduct.userIndex = `-1`;
     }
     if (cartId.includes(cartProduct.productId)) {
-      
       cart[cartId.indexOf(cartProduct.productId)].quantity++;
     } else {
       myCart = new Cart(cartProduct.productId, cartProduct.userIndex, i);
@@ -196,4 +198,63 @@ document.querySelectorAll(".crt").forEach((el, i) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
   });
+});
+
+//!*********************************!\\
+//*Rendering the Side Catagories bar*\\
+//?*********************************?\\
+
+const catagories = [`computer`, `mobile`, `home`];
+
+bigArray.forEach(el => {
+  if (!catagories.includes(el.category)) {
+    catagories.push(el.category);
+  }
+});
+
+catagories.forEach(el => {
+  let capital = el.split(``);
+  capital[0] = capital[0].toUpperCase();
+  capital = capital.join(``);
+  const markup = `
+  <li><button class="${el}-btn waves-effect">${capital}</button></li>
+  <li>
+    <div class="divider"></div>
+  </li>`;
+  elements.list.insertAdjacentHTML("beforeend", markup);
+});
+//* Category selecting Variable
+let array;
+
+//? To show all products
+const showAll = () =>
+  document.querySelectorAll(".col").forEach(el => {
+    elements.productName.innerHTML = ``;
+    el.classList.remove(`hidden`);
+    el.classList.remove(`fade`);
+  });
+
+//! TO show selected products
+const showProducts = nameProduct => {
+  //* Selecting all elements with class of category
+  array = document.querySelectorAll(`.${nameProduct}`);
+
+  //? Selecting all cards
+  const allProducts = document.querySelectorAll(".col");
+
+  //! Adding Class of Hidden
+  allProducts.forEach(el => el.classList.add("hidden"));
+
+  //* Changing HTML of Heading
+  elements.productName.innerHTML = nameProduct;
+
+  //? Removing class of hidden from specific elements
+  array.forEach(el => el.classList.remove("hidden"));
+};
+
+//! Adding Listener to all Buttons
+catagories.forEach(el => {
+  document
+    .querySelector(`.${el}-btn`)
+    .addEventListener("click", () => showProducts(el));
 });
