@@ -36,8 +36,8 @@ const allProducts = [
     price: `$200.00`
   },
   {
-    title: `White & Decker Microwave Oven 20Ltr (MZ2010P)`,
-    category: `home`,
+    title: `handfree`,
+    category: `mobile`,
     price: `$499.99`
   },
   {
@@ -49,6 +49,21 @@ const allProducts = [
     title: `Electrolux SEM-130ESL-B6 Microwave Oven`,
     category: `home`,
     price: `$999.99`
+  },
+  {
+    title: `Laptop`,
+    category: `laptop`,
+    price: `$1909.50`
+  },
+  {
+    title: `Laptop`,
+    category: `laptop`,
+    price: `$1909.50`
+  },
+  {
+    title: `Laptop`,
+    category: `laptop`,
+    price: `$1909.50`
   }
 ];
 const descriptions = [
@@ -59,7 +74,10 @@ const descriptions = [
   `Patented Damping System and Transmission Tube designed to deliver crystal clear and detailed sound.Ergonomically-designed for a perfect fit to your ear.CNC precision crafted with diamond cut rings to deliver the ASUS iconic Zen design`,
   `ishopping.pk brings you the best price for White & Decker Microwave Oven 20Ltr (MZ2010P) with 1 year official warranty and express shipping all over Pakistan.`,
   `With our Burger 23D Grill Black We Have perfected the art of combining power efficiency with microwave cooking. Burger is just great with the usual microwave features but saves up on energy to keep a tight check on your electricity bills.`,
-  `We operate under an advanced corporate governance structure that comprises of a Board of Directors.`
+  `We operate under an advanced corporate governance structure that comprises of a Board of Directors.`,
+  `The vision is there, but the technology isn’t not quite in place yet. In order to process the data sets of future AI applications, the underlying chips must first reach a new level. One current solution approach for armaments industry.`,
+  `The vision is there, but the technology isn’t not quite in place yet. In order to process the data sets of future AI applications, the underlying chips must first reach a new level. One current solution approach for armaments industry.`,
+  `The vision is there, but the technology isn’t not quite in place yet. In order to process the data sets of future AI applications, the underlying chips must first reach a new level. One current solution approach for armaments industry.`
 ];
 
 const ids = JSON.parse(localStorage.getItem("productID")) || [];
