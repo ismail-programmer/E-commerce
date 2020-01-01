@@ -41,6 +41,7 @@ if (userIndex === null) {
     src = new FileReader();
     src.readAsDataURL(image);
   });
+  // console.log(active.image);
 
   //for editing values of user details
   const Edit = () => {
@@ -48,8 +49,11 @@ if (userIndex === null) {
     active.category = values.category.value;
     active.price = values.price.value;
     if (!src === undefined) {
+      active.image = active.image;
+    } else {
       active.image = src.result;
     }
+
     active.description = values.description.value;
     localStorage.setItem("products", JSON.stringify(products));
   };

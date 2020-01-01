@@ -1,4 +1,4 @@
-const html = `<li class="collection-item avatar" id="%I%"><div class="div cancel"><button class="transparent delete btn grey-text">&rotimes;</button></div><img src="%IMAGE%" alt="" class="circle" /><span style="font-size: 1.8rem;" class="title">%TITLE%</span><p><span>%PRICE%</span><br /><span>%CATAGORY%</span></p><a href="../OrderInfo/index.html?id=%I%" class="orderBtn btn grey white-text waves-effect waves-block">Order</a><div class="secondary-content"><div class="div up"><button class="btn-small increase transparent grey-text">&bigtriangleup;</button></div><div class="q" contenteditable="true" id="%I%">%QUANTITY%</div><div class="div down"><button class="btn-small decrease transparent grey-text">&bigtriangledown;</button></div></div></li>`;
+const html = `<li class="collection-item avatar" id="%I%"><div class="div cancel"><button class="transparent delete btn grey-text">&rotimes;</button></div><img src="%IMAGE%" alt="" class="circle" /><span style="font-size: 1.8rem;" class="title">%TITLE%</span><p><span>%PRICE%</span><br /></p><a href="../OrderInfo/index.html?id=%I%" class="orderBtn btn grey white-text waves-effect waves-block">Order</a><div class="secondary-content"><div class="div up"><button class="btn-small increase transparent grey-text">&bigtriangleup;</button></div><div class="q" contenteditable="true" id="%I%">%QUANTITY%</div><div class="div down"><button class="btn-small decrease transparent grey-text">&bigtriangledown;</button></div></div></li>`;
 const products = JSON.parse(localStorage.getItem("previousProducts")) || [];
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 // new products by user
@@ -25,9 +25,8 @@ const calculateTotal = (amount, price) => {
 };
 
 const renderHtml = (el, i) => {
-  if(!el.userIndex){
-    el.image = `../Product/${el.image}`
-    // alert()
+  if (!el.userIndex) {
+    el.image = `../Product/${el.image}`;
   }
   let newHtml = html.replace(/%IMAGE%/g, el.image);
   newHtml = newHtml.replace(/%TITLE%/g, el.title);
@@ -52,7 +51,8 @@ jsRenderElements.btnInc.forEach(el => {
     //! UI
     let q = e.target.parentNode.nextElementSibling;
     const price =
-      e.target.parentNode.parentNode.previousElementSibling.previousElementSibling.firstElementChild.innerHTML;
+      e.target.parentNode.parentNode.previousElementSibling
+        .previousElementSibling.firstElementChild.innerHTML;
     let innerhtml;
     if (q.innerHTML === `0`) {
       innerhtml = `1`;
@@ -106,7 +106,6 @@ for (let i = 0; i < cart.length; i++) {
 }
 
 cartProducts.forEach((el, i) => {
- 
   document.querySelector(`.price${i}`).innerHTML = `$${calculateTotal(
     el.quantity,
     el.price
