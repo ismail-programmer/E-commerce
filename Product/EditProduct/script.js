@@ -48,13 +48,11 @@ if (userIndex === null) {
     active.title = values.title.value;
     active.category = values.category.value;
     active.price = values.price.value;
-    if (!src === undefined) {
-      active.image = active.image;
-    } else {
+    active.description = values.description.value;
+    if (src) {
       active.image = src.result;
     }
 
-    active.description = values.description.value;
     localStorage.setItem("products", JSON.stringify(products));
   };
 
