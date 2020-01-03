@@ -31,7 +31,7 @@ if (userIndex === null) {
     const Show = () => {
       values.title.value = active.title;
       values.category.value = active.category;
-      values.price.value = active.price;
+      values.price.value = active.price.split(`$`)[1];
       values.description.value = active.description;
     };
 

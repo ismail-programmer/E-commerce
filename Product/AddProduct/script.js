@@ -58,9 +58,8 @@ inputs.image.addEventListener("change", () => {
 const Create = () => {
   let title = inputs.title.value;
   let category = inputs.category.value;
-  let price = inputs.price.value;
+  let price =  `$${inputs.price.value}`;
   let description = inputs.description.value;
-  console.log(src.result);
   // pushing new product data in array of product array
   products.forEach((el, i) => (el.index = i));
   products.unshift(new Product(title, category, price, src.result, description,userIndex));
