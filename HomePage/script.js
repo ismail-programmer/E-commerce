@@ -48,12 +48,12 @@ bigArray.forEach((el, i) => {
         src="${el.image}"
         alt="${el.title}"
       />
-      <a id=${i} class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+      <a data-index=${el.index} class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">${el.title}<i class="material-icons right">more_vert</i></span>
       <span class="card-title activator grey-text text-darken-2">${el.price}</span>
-      <p> <a  href="../Product/ViewDetails/index.html">   <button class="btn link" id="${i}">View More</button></a></p>
+      <p> <a  href="../Product/ViewDetails/index.html">   <button class="btn link" data-index="${i}">View More</button></a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">${el.title}<i class="material-icons right">close</i></span>
@@ -100,7 +100,7 @@ setTimeout(() => {
 //for getting index for view details
 document.querySelectorAll(".link").forEach(el => {
   el.addEventListener("click", e => {
-    localStorage.setItem("pIndex", e.target.id);
+    localStorage.setItem("pIndex", e.target.dataset.index);
   });
 });
 
@@ -119,15 +119,14 @@ const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartId = cart.map(el => el.productId);
 document.querySelectorAll(".crt").forEach((el, i) => {
   const cartProduct = bigArray[i];
-  el.addEventListener("click", () => {
+  el.addEventListener("click", e => {
     if (!cartProduct.userIndex || cartProduct.userIndex === `-1`) {
       cartProduct.userIndex = `-1`;
     }
     if (cartId.includes(cartProduct.productId)) {
       cart[cartId.indexOf(cartProduct.productId)].quantity++;
     } else {
-      myCart = new Cart(cartProduct.productId, cartProduct.userIndex, i);
-      console.log(myCart);
+      myCart = new Cart(cartProduct.productId, cartProduct.userIndex, e.target.dataset.index);
       cart.unshift(myCart);
       cartId.unshift(myCart.productId);
     }
@@ -153,7 +152,6 @@ setTimeout(()=>{
     document.getElementById("user").innerHTML = users[userIndex].username;
     document.getElementById("userId").innerHTML = users[userIndex].id;
   } else {
-    
     document.getElementById("nav-nav").innerHTML = `
     <div class="row">
       <div class="s12 center-align"><img src="./images/icon.png" alt="Login" class="img" width="150px"></div>
