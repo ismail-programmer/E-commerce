@@ -2,6 +2,7 @@ const userProducts = JSON.parse(localStorage.getItem("products")) || [];
 const products = JSON.parse(localStorage.getItem("previousProducts")) || [];
 const users = JSON.parse(localStorage.getItem("users")) || [];
 const pIndex = localStorage.getItem("pIndex");
+// localStorage.removeItem()
 products.forEach(el => {
   el.image = `.${el.image}`;
 });
@@ -25,9 +26,9 @@ let items = {
 };
 if (!pIndex) document.body.innerHTML = `<h1>Please Select a Product</h1>`;
 else {
-  items.userId.innerHTML = active.userId;
+  items.userId.innerHTML = active.userId ? active.userId : `ADMIN`;
   items.productId.innerHTML = active.productId;
-  items.username.innerHTML = active.username;
+  items.username.innerHTML = active.username ? active.username : `Admin`;
   items.title.innerHTML = active.title;
   items.category.innerHTML = active.category;
   items.price.innerHTML = active.price;

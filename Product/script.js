@@ -1,6 +1,6 @@
 let rowId = 0;
 let rowIdHtml = 0;
-
+localStorage.removeItem('pIndex');
 // geting  users
 let users =
   JSON.parse(localStorage.getItem("products")) === null

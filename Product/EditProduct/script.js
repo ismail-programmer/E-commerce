@@ -3,9 +3,11 @@ let userIndex = localStorage.getItem("userIndex");
 let src;
 
 let products = JSON.parse(localStorage.getItem("products")) || [];
+let previousProducts =
+  JSON.parse(localStorage.getItem("previousProducts")) || [];
 const pIndex = +localStorage.getItem("pIndex");
+const allProducts = [...products, ...previousProducts];
 const active = products[pIndex];
-
 //getting feild ids
 let values = {
   title: document.getElementById("title"),
@@ -25,38 +27,41 @@ if (userIndex === null) {
   <a href="../../Login/index.html">Please log in</b>
   `;
 } else {
-  const Show = () => {
-    values.title.value = active.title;
-    values.category.value = active.category;
-    values.price.value = active.price;
-    values.description.value = active.description;
-  };
+  if (allProducts[pIndex].username) {
+    const Show = () => {
+      values.title.value = active.title;
+      values.category.value = active.category;
+      values.price.value = active.price;
+      values.description.value = active.description;
+    };
 
-  // for showing previous values
-  Show();
+    // for showing previous values
+    Show();
 
-  // image function loading
-  values.image.addEventListener("change", () => {
-    let image = values.image.files[0];
-    src = new FileReader();
-    src.readAsDataURL(image);
-  });
-  // console.log(active.image);
+    // image function loading
+    values.image.addEventListener("change", () => {
+      let image = values.image.files[0];
+      if (image) {
+        src = new FileReader();
+        src.readAsDataURL(image);
+      }
+    });
 
-  //for editing values of user details
-  const Edit = () => {
-    active.title = values.title.value;
-    active.category = values.category.value;
-    active.price = values.price.value;
-    active.description = values.description.value;
-    if (src) {
-      active.image = src.result;
-    }
-
-    localStorage.setItem("products", JSON.stringify(products));
-  };
-
-  values.form.addEventListener("submit", Edit);
+    //for editing values of user details
+    const Edit = e => {
+      active.title = values.title.value;
+      active.category = values.category.value;
+      active.price = `$${values.price.value}`;
+      if (src) {
+        active.image = src.result;
+      }
+      active.description = values.description.value;
+      localStorage.setItem("products", JSON.stringify(products));
+    };
+    values.form.addEventListener("submit", Edit);
+  } else {
+    document.body.innerHTML = `<h1>You can only Edit products that you created</h1>`;
+  }
   values.dlt.addEventListener("click", () => {
     products.splice(pIndex, 1);
     products = products;
