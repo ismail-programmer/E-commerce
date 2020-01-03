@@ -90,6 +90,7 @@ jsRenderElements.btnDec.forEach(el => {
     cart[q.id].quantity = innerhtml;
     document.querySelector(`.price${q.id}`).innerHTML =
       `$` + calculateTotal(innerhtml, price).toFixed(2);
+      
     localStorage.setItem("cart", JSON.stringify(cart));
   });
 });

@@ -39,7 +39,7 @@ if (userIndex === null) {
           </div>
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4">${product.title}<i class="material-icons right">more_vert</i></span>
-            <p><a class="btn" id="${i}" href="../ViewDetails/index.html">View More</a></p>
+            <p><a class="btn link" data-index=${product.index} href="../ViewDetails/index.html">View More</a></p>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">${product.title}<i class="material-icons right">close</i></span>
@@ -53,7 +53,7 @@ if (userIndex === null) {
   }
   document.querySelectorAll(".link").forEach(el => {
     el.addEventListener("click", e => {
-      localStorage.setItem("pIndex", e.target.id);
+      localStorage.setItem("pIndex", e.target.dataset.index);
     });
   });
 }

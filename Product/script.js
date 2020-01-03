@@ -127,12 +127,12 @@ bigArray.map((el, i) => {
           src="${el.image}"
           alt="${el.title}"
         />
-        <a id=${i} class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a data-index=${el.index} class="crt btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">${el.title}<i class="material-icons right">more_vert</i></span>
         <span class="card-title activator grey-text text-darken-2">${el.price}</span>
-        <p> <a  href="./ViewDetails/index.html">   <button class="btn link" id="${i}">View More</button></a></p>
+        <p> <a  href="./ViewDetails/index.html">   <button class="btn link" data-index=${el.index}>View More</button></a></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">${el.title}<i class="material-icons right">close</i></span>
@@ -179,7 +179,7 @@ setTimeout(() => {
 localStorage.setItem("previousProducts", JSON.stringify(allProducts));
 document.querySelectorAll(".link").forEach(el => {
   el.addEventListener("click", e => {
-    localStorage.setItem("pIndex", e.target.id);
+    localStorage.setItem("pIndex", e.target.dataset.index);
     console.log(e.target.id);
   });
 });
@@ -210,7 +210,6 @@ document.querySelectorAll(".crt").forEach((el, i) => {
       cart[cartId.indexOf(cartProduct.productId)].quantity++;
     } else {
       myCart = new Cart(cartProduct.productId, cartProduct.userIndex, i);
-      console.log(myCart);
       cart.unshift(myCart);
       cartId.unshift(myCart.productId);
     }
