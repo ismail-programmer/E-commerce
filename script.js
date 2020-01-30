@@ -16,7 +16,7 @@ let products =
     : JSON.parse(localStorage.getItem("products"));
 const allProducts = JSON.parse(localStorage.getItem("previousProducts"));
 allProducts.forEach(el => {
-  el.image = `./Product/images${el.image}`;
+  el.image = `./Product/${el.image}`;
 });
 
 let bigArray = [...products, ...allProducts];
