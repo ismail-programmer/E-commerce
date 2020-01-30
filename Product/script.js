@@ -3,7 +3,7 @@ let rowIdHtml = 0;
 localStorage.removeItem('pIndex');
 // geting  users
 let users =
-  JSON.parse(localStorage.getItem("products")) === null
+  JSON.parse(localStorage.getItem("users")) === null
     ? []
     : JSON.parse(localStorage.getItem("products"));
 
@@ -180,11 +180,13 @@ localStorage.setItem("previousProducts", JSON.stringify(allProducts));
 document.querySelectorAll(".link").forEach(el => {
   el.addEventListener("click", e => {
     localStorage.setItem("pIndex", e.target.dataset.index);
-    console.log(e.target.id);
   });
 });
 
+
+// *********************
 //adding cart
+// *********************
 let myCart;
 class Cart {
   constructor(productId, userIndex, productIndex) {
