@@ -16,7 +16,7 @@ let products =
     : JSON.parse(localStorage.getItem("products"));
 const allProducts = JSON.parse(localStorage.getItem("previousProducts"));
 allProducts.forEach(el => {
-  el.image = `./Product/${el.image}`;
+  el.image = `./Product/images/${el.image}`;
 });
 
 let bigArray = [...products, ...allProducts];
@@ -53,7 +53,7 @@ bigArray.forEach((el, i) => {
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">${el.title}<i class="material-icons right">more_vert</i></span>
       <span class="card-title activator grey-text text-darken-2">${el.price}</span>
-      <p> <a  href="../Product/ViewDetails/index.html">   <button class="btn link" data-index="${i}">View More</button></a></p>
+      <p> <a  href="./Product/ViewDetails/index.html">   <button class="btn link" data-index="${i}">View More</button></a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">${el.title}<i class="material-icons right">close</i></span>
@@ -157,8 +157,8 @@ setTimeout(()=>{
       <div class="s12 center-align"><img src="./images/icon.png" alt="Login" class="img" width="150px"></div>
     </div>
     <div class="row">
-      <div class="col s6 center-align"><a href="../Login/index.html" class="btn white grey-text center">Login</a></div>
-      <div class="col s6 center-align"><a href="../SignUp/index.html" class="btn white grey-text center">SignUp</a></div>
+      <div class="col s6 center-align"><a href="./Login/index.html" class="btn white grey-text center">Login</a></div>
+      <div class="col s6 center-align"><a href="./SignUp/index.html" class="btn white grey-text center">SignUp</a></div>
     </div>`;
   }
   
